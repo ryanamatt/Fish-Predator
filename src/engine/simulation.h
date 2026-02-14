@@ -4,6 +4,7 @@
 #include "Boid.h"
 #include "Grid.h"
 #include <omp.h>
+#include <algorithm>
 
 class Simulation {
 public:
@@ -34,7 +35,9 @@ public:
             Boid* neighborBuffer[64]; 
             int found = grid.query(b.pos.x, b.pos.y, neighborBuffer, 64);
 
-            b.flock(neighborBuffer, found, predatorPos);
+            std::vector<Boid*> neighbors(neighborBuffer, neighborBuffer + found);
+
+            b.flock(neighbors, predatorPos);
             b.update();
 
             // Boundary wrap
@@ -42,6 +45,18 @@ public:
             else if (b.pos.x < 0) b.pos.x = width;
             if (b.pos.y > height) b.pos.y = 0;
             else if (b.pos.y < 0) b.pos.y = height;
+        }
+    }
+
+    void remove_boids(const std::vector<int>& indices) {
+        // Sort indices in descending order to remove from back to front
+        std::vector<int> sorted_indices = indices;
+        std::sort(sorted_indices.begin(), sorted_indices.end(), std::greater<int>());
+
+        for (int idx : sorted_indices) {
+            if (idx >= 0 && idx < static_cast<int>(boids.size())) {
+                boids.erase(boids.begin() + idx);
+            }
         }
     }
 };

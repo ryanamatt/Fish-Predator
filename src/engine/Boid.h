@@ -53,7 +53,7 @@ public:
         return wanderForce;
     }
 
-    void flock(Boid** neighbors, int neighborCount, Vector2D predatorPos) {
+    void flock(const std::vector<Boid*> neighbors, Vector2D predatorPos) {
         Vector2D sepSteer(0, 0), alignSum(0, 0), cohSum(0, 0);
         int sepCount = 0;
         int flockCount = 0;
@@ -61,8 +61,7 @@ public:
         float alignDistSq = 2500.0f; // 50^2
         float sepDistSq = 625.0f;    // 25^2
 
-        for (int i = 0; i < neighborCount; ++i) {
-            Boid* other = neighbors[i];
+        for (Boid* other : neighbors) {
             if (other == this) continue;
             
             Vector2D diff = wrappedDiff(pos, other->pos);

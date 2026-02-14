@@ -19,18 +19,19 @@ PYBIND11_MODULE(boid_engine, m) {
         .def("__mul__", &Vector2D::operator*)
         .def("mag", &Vector2D::mag);
 
-    // py::class_<Boid>(m, "Boid")
-    //     .def(py::init<float, float>())
-    //     .def_readwrite("pos", &Boid::pos)
-    //     .def_readwrite("vel", &Boid::vel)
-    //     .def("update", &Boid::update)
-    //     .def("applyForce", &Boid::applyForce)
-    //     .def("flock", &Boid::flock)
-    //     .def("seek", &Boid::seek);
+    py::class_<Boid>(m, "Boid")
+        .def(py::init<float, float>())
+        .def_readwrite("pos", &Boid::pos)
+        .def_readwrite("vel", &Boid::vel)
+        .def("update", &Boid::update)
+        .def("applyForce", &Boid::applyForce)
+        .def("flock", &Boid::flock)
+        .def("seek", &Boid::seek);
 
     py::class_<Simulation>(m, "Simulation")
         .def(py::init<int, float, float>())
         .def("step", &Simulation::step)
+        .def("remove_boids", &Simulation::remove_boids)
         .def_readwrite("boids", &Simulation::boids)
         .def("get_all_positions", [](Simulation &self) {
             std::vector<float> pos_data;

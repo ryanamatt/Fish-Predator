@@ -6,7 +6,7 @@ os.environ['OMP_WAIT_POLICY'] = 'PASSIVE'
 import boid_engine
 
 WIDTH, HEIGHT = 1200, 800
-BOID_COUNT = 5000
+BOID_COUNT = 1000
 
 # Performance settings
 RENDER_EVERY_N_FRAMES = 1  # Set to 2 or 3 to reduce rendering load
