@@ -1,4 +1,4 @@
-Fish-Predator: High-Performance Boid Simulation
+# Fish-Predator: High-Performance Boid Simulation
 
 A high-performance flocking simulation using a C++ physics engine exposed to Python via pybind11. This project implements Craig Reynolds' boid algorithms with significant optimizations, including OpenMP parallelization and Spatial Partitioning via a uniform grid.
 
