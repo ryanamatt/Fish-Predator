@@ -2,7 +2,9 @@
 
 A high-performance flocking simulation using a C++ physics engine exposed to Python via pybind11. This project implements Craig Reynolds' boid algorithms with significant optimizations, including OpenMP parallelization and Spatial Partitioning via a uniform grid.
 
-🚀 Key Features
+![Gif of the Simulation in Action](resources/Fish-Predator.gif)
+
+## Key Features
 
 C++ Backend: Heavy lifting (physics, collision, and neighbor lookups) is handled in C++ for maximum performance.
 
@@ -14,7 +16,7 @@ Vectorized Data Transfer: Uses NumPy-compatible memory buffers to pass state bet
 
 Predator Interaction: Real-time avoidance behavior where boids flee from the mouse cursor.
 
-🛠 Tech Stack
+## Tech Stack
 
 Core: C++11
 
@@ -26,7 +28,7 @@ Visuals: Python (Pygame)
 
 Math: NumPy
 
-📂 Project Structure
+## Project Structure
 
 src/engine/: C++ Headers (Boid.h, Grid.h, Vector2D.h, simulation.h)
 
@@ -38,7 +40,7 @@ setup.py: Build script for the C++ extension module.
 
 tests/: Performance benchmarking and behavior validation scripts.
 
-⚙️ Installation & Building
+## Installation & Building
 
 Prerequisites
 
@@ -62,7 +64,7 @@ Or build in-place for development:
 python setup.py build_ext --inplace
 ```
 
-🎮 Running the Simulation
+## Running the Simulation
 
 Execute the main GUI script:
 
@@ -71,7 +73,7 @@ python scripts/gui.py
 ```
 
 
-🔬 Performance Optimizations
+## Performance Optimizations
 
 1. Spatial Partitioning
 
@@ -94,7 +96,7 @@ This allows the simulation to scale linearly with your CPU's core count.
 
 gui.py uses pygame.surfarray for fast pixel manipulation and NumPy's vectorized operations to calculate fish orientations, ensuring the visualization isn't a bottleneck for the C++ engine.
 
-📊 Configuration
+## Configuration
 
 You can tune the simulation in scripts/gui.py:
 

@@ -56,8 +56,6 @@ while running:
     pos = state[:, :2]
     vel = state[:, 2:]
 
-    if frame_count % 30 == 0: print(pos[0], vel[0])
-
     # Vectorized direction calculation
     v_mag = np.linalg.norm(vel, axis=1, keepdims=True)
     v_mag = np.maximum(v_mag, 1.0)  # Avoid division by zero (faster than boolean indexing)
