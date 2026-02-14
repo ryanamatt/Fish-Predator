@@ -1,0 +1,10 @@
+# Build artifacts
+build/
+dist/
+*.pyd
+*.egg-info/
+
+# Environments
+venv/
+.vscode/
+__pycache__/
